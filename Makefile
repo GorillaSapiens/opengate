@@ -95,7 +95,7 @@ dbg/%.i: src/%.lsl
 
 dbg/%.j: dbg/%.i
 	@/lib/cpp -Ilib -P $(FLAGS) -Dvoid= $< > $@
-	@-$(LSLINT) $@ |& egrep -v "Unused event parameter .unused"
+	@-$(LSLINT) $@ 2>&1 | egrep -v "Unused event parameter .unused"
 
 bin/%.o: dbg/%.i
 	@cat $< | tools/i2o.pl `basename $<` > $@
