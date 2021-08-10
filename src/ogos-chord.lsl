@@ -78,6 +78,7 @@ string details() {
 void enqueue(string url) {
    if (llGetListLength(queue) < MAXLISTSIZE) {
       if (url != me && url != "" &&
+            -1 != llSubStringIndex(url, "$") &&
             -1 != llSubStringIndex(url, "!") &&
             -1 == llListFindList(queue, [ url ]) &&
             -1 == llListFindList(fingers, [ url ])) {
