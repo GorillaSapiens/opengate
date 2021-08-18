@@ -556,6 +556,21 @@ default {
 
       enqueue(s);
 
+      if (hasflag("debug:email")) {
+         llOwnerSay(s);
+         llOwnerSay(unused_m);
+      }
+      if (hasflag("debug:lost")) {
+         if (-1 == llSubStringIndex(s, "$")) {
+            llOwnerSay(s);
+            llOwnerSay(unused_m);
+         }
+      }
+
+      if (-1 == llSubStringIndex(s, "$")) {
+         llOwnerSay(unused_m);
+      }
+
 #ifdef DEBUG
       incoming_mail = n;
 
